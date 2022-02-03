@@ -6,7 +6,11 @@ import numpy as np
 
 ssl._create_default_https_context = ssl._create_unverified_context
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
-img_name = "shot.png"
+img_name = ""
+try:
+    img_name = sys.argv[1]
+except:
+    img_name = "shot.png"
 img = cv.imread(img_name)
 results = model(img_name)
 idx = 0
